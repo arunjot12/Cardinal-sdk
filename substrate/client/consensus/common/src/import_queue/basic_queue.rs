@@ -99,7 +99,7 @@ impl<B: BlockT> BasicQueue<B> {
 	}
 }
 
-#[derive(Clone)]
+#[derive(Clone,Debug)]
 struct BasicQueueHandle<B: BlockT> {
 	/// Channel to send justification import messages to the background task.
 	justification_sender: TracingUnboundedSender<worker_messages::ImportJustification<B>>,
@@ -201,8 +201,9 @@ impl<B: BlockT> ImportQueue<B> for BasicQueue<B> {
 /// Messages destinated to the background worker.
 mod worker_messages {
 	use super::*;
-
+	#[derive(Debug)]
 	pub struct ImportBlocks<B: BlockT>(pub BlockOrigin, pub Vec<IncomingBlock<B>>);
+	#[derive(Debug)]
 	pub struct ImportJustification<B: BlockT>(
 		pub RuntimeOrigin,
 		pub B::Hash,

@@ -34,7 +34,7 @@ use sp_runtime::{
 	traits::{Block as BlockT, Header as _, NumberFor},
 	Justifications,
 };
-
+use std::fmt::Debug;
 use crate::{
 	block_import::{
 		BlockCheckParams, BlockImport, BlockImportParams, ImportResult, ImportedAux, ImportedState,
@@ -103,7 +103,7 @@ pub trait Verifier<B: BlockT>: Send {
 /// Blocks import queue API.
 ///
 /// The `import_*` methods can be called in order to send elements for the import queue to verify.
-pub trait ImportQueueService<B: BlockT>: Send {
+pub trait ImportQueueService<B: BlockT>: Send + Debug {
 	/// Import bunch of blocks.
 	fn import_blocks(&mut self, origin: BlockOrigin, blocks: Vec<IncomingBlock<B>>);
 

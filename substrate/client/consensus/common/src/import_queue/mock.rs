@@ -19,6 +19,7 @@
 use super::*;
 
 mockall::mock! {
+	#[derive(Debug)]
 	pub ImportQueueHandle<B: BlockT> {}
 
 	impl<B: BlockT> ImportQueueService<B> for ImportQueueHandle<B> {
