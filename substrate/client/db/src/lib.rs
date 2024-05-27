@@ -570,7 +570,7 @@ impl<Block: BlockT> BlockchainDb<Block> {
 		self.pinned_blocks_cache.write().unpin(hash);
 	}
 
-	fn justifications_uncached(&self, hash: Block::Hash) -> ClientResult<Option<Justifications>> {
+	pub fn justifications_uncached(&self, hash: Block::Hash) -> ClientResult<Option<Justifications>> {
 		match read_db(
 			&*self.db,
 			columns::KEY_LOOKUP,
