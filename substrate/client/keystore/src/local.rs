@@ -43,7 +43,7 @@ use sp_core::{bls377, bls381, ecdsa_bls377};
 use crate::{Error, Result};
 #[derive(Debug)]
 /// A local based keystore that is either memory-based or filesystem-based.
-pub struct LocalKeystore(RwLock<KeystoreInner>);
+pub struct LocalKeystore(pub RwLock<KeystoreInner>);
 
 impl LocalKeystore {
 	/// Create a local keystore from filesystem.
