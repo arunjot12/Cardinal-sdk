@@ -528,7 +528,7 @@ impl KeystoreInner {
 	}
 
 	/// Get a key pair for the given public key and key type.
-	fn key_pair_by_type<Pair: CorePair>(
+	pub fn key_pair_by_type<Pair: CorePair>(
 		&self,
 		public: &Pair::Public,
 		key_type: KeyTypeId,
