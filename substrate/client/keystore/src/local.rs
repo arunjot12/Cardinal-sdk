@@ -41,7 +41,7 @@ use sp_core::{bls377, bls381, ecdsa_bls377};
 }
 
 use crate::{Error, Result};
-
+#[derive(Debug)]
 /// A local based keystore that is either memory-based or filesystem-based.
 pub struct LocalKeystore(RwLock<KeystoreInner>);
 
@@ -399,7 +399,7 @@ impl Into<KeystorePtr> for LocalKeystore {
 		Arc::new(self)
 	}
 }
-
+#[derive(Debug)]
 /// A local key store.
 ///
 /// Stores key pairs in a file system store + short lived key pairs in memory.
